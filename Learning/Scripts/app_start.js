@@ -1,16 +1,14 @@
 Ext.application({
 	requires: ['Ext.container.Viewport'],
-	name: 'MvcExtTest',
+	name: 'Learning',
 	appFolder: 'Scripts/app',
-	/*controllers: ['Users'],*/
+	controllers: ['Citizens'],
 
 	launch: function() {
 		Ext.create('Ext.container.Viewport', {
 			layout: 'fit',
 			items: {
-				/*xtype: 'tableUser',*/
-				title: 'Приложение на Ext JS 4',
-				html: '<h3>Добро пожаловать в мир Ext JS 4!</h3>'
+				xtype: 'citizenlist'
 			}
 		});
 	}
