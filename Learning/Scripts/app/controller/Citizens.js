@@ -101,8 +101,45 @@
         view.down('form').loadRecord(record);
     },
 
-    SearchCitizen: function (grid, record) {
+    SearchCitizen: function (button) {
+        var panel = button.up('citizenlist');
+        var gridPanel = panel.down('gridpanel[name=resultSearch]');
 
+        var storeGridPanel = gridPanel.getStore();
+
+        var jData = this.GetParams(panel);
+
+        Ext.Ajax.request({
+            url: 'Search/preSearch',
+            method: 'POST',
+            jsonData: jData,
+            success: function (response) {
+                var data = Ext.decode(response.responseText);
+                if (data.success) {
+                    var store = Ext.widget('booklist').getStore();
+                    store.load();
+                    Ext.Msg.alert('Обновление', data.message);
+                }
+                else {
+                    Ext.Msg.alert('Обновление', 'Не удалось обновить книгу в библиотеке');
+                }
+            }
+        });
+        storeGridPanel.load();
+    },
+    GetParams: function (panel) {
+        var surnameText = panel.down('textfield[name=surnamefilter]').getValue();
+        var nameText = panel.down('textfield[name=namefilter]').getValue();
+        var fathernameText = panel.down('textfield[name=fathernamefilter]').getValue();
+        var firstdateDate = panel.down('datefield[name=firstdatefilter]');
+        var lastdateDate = panel.down('datefield[name=lastdatefilter]');
+        var jData = {
+            surNameFilter: surnameText ? surnameText + '' : '',
+            nameFilter: nameText ? nameText + '' : '',
+            fatherNameFilter: fathernameText ? fathernameText + '' : '',
+            firstDateFilter: firstdateDate.getValue() ? Ext.Date.format(firstdateDate.getValue(), 'Y.m.d') : '',
+            lastDateFilter: lastdateDate.getValue() ? Ext.Date.format(lastdateDate.getValue(), 'Y.m.d') : '',
+        };
+        return jData;
     }
-
 });

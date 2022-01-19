@@ -1,15 +1,15 @@
 ﻿Ext.define('Learning.store.CitizenStore', {
     extend: 'Ext.data.Store',
     model: 'Learning.model.Citizen',
-    autoLoad: true,
+/*    autoLoad: true,*/
     storeId: 'CitizenStore',
     proxy: {
         type: 'ajax',
-        url: 'app/data/Сitizens.json',
+        url: 'Search/Search',
         reader: {
             type: 'json',
             root: 'citizens',
-            successProperty: 'success'
+/*            successProperty: 'success'*/
         }
     }
 });

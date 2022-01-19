@@ -4,7 +4,6 @@
     type: 'vbox',
     align: 'stretch',
     title: 'Реестр граждан',
-    store: 'CitizenStore',
 
     initComponent: function () {
         
@@ -49,10 +48,12 @@
             {
                 xtype: 'panel',
                 title: 'Фильтры поиска',
+                name: 'searchFilters',
                 flex: 1,
                 items: [
                     {
                         xtype: 'container',
+                        name: 'fioFilters',
                         layout: {
                             type: 'vbox',
 
@@ -62,7 +63,7 @@
                                 margin: '5 5 5 5',
                                 xtype: 'textfield',
                                 width: '15%',
-                                name: 'surfilter',
+                                name: 'surnamefilter',
                                 fieldLabel: 'Фамилия',
                                 allowBlank: false  // requires a non-empty value
                             },
@@ -70,7 +71,7 @@
                                 margin: '5 5 5 5',
                                 xtype: 'textfield',
                                 width: '15%',
-                                name: 'firstfilter',
+                                name: 'namefilter',
                                 fieldLabel: 'Имя',
                                 allowBlank: false  // requires a non-empty value
                             },
@@ -78,7 +79,7 @@
                                 margin: '5 5 5 5',
                                 xtype: 'textfield',
                                 width: '15%',
-                                name: 'fatherfilter',
+                                name: 'fathernamefilter',
                                 fieldLabel: 'Отчество',
                                 allowBlank: false  // requires a non-empty value
                             }
@@ -86,7 +87,7 @@
                     },
                     {
                         xtype: 'container',
-                        
+                        name: 'dateFilters',
                         layout: {
                             type: 'hbox',
                         },
@@ -119,7 +120,9 @@
             },
             {
                 xtype: 'gridpanel',
+                name: 'resultSearch',
                 title: 'Таблица',
+                store: 'CitizenStore',
                 flex: 2,
                 columns: [
                     {
@@ -127,7 +130,7 @@
                         draggable: false,
                         flex: 1,
                         align: 'left',
-                        dataIndex: 'fio',
+                        dataIndex: 'surname',
                         name: 'surname',
                         text: 'Фамилия'
                     },
@@ -136,7 +139,7 @@
                         draggable: false,
                         flex: 1,
                         align: 'left',
-                        dataIndex: 'fio',
+                        dataIndex: 'firstname',
                         name: 'firstname',
                         text: 'Имя'
                     },
@@ -145,7 +148,7 @@
                         draggable: false,
                         flex: 1,
                         align: 'left',
-                        dataIndex: 'fio',
+                        dataIndex: 'fathername',
                         name: 'fathername',
                         text: 'Отчество'
                     },
