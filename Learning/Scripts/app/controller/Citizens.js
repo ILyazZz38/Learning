@@ -1,29 +1,28 @@
 ﻿Ext.define('Learning.controller.Citizens', {
     extend: 'Ext.app.Controller',
 
-    views: ['CitizenList', 'Citizen'],
+    views: ['CitizenList'/*, 'Citizen'*/],
     stores: ['CitizenStore'],
     models: ['Citizen'],
     init: function () {
         this.control({
             'viewport > citizenlist': {
-                itemdblclick: this.editBook
+                itemdblclick: this.editCitezen
             },
-            'citizenwindow button[action=search]': {
-                click: this.createBook
-            },
-            'citizenwindow button[action=new]': {
-                click: this.createBook
-            },
-            'citizenwindow button[action=change]': {
-                click: this.updateBook
-            },
-            'citizenwindow button[action=delete]': {
-                click: this.deleteBook
-            },
-            'bookwindow button[action=clear]': {
-                click: this.clearForm
+            'citizenlist button[action=search]': {
+                click: this.SearchCitizen
             }
+            //'citizenwindow button[action=new]': {
+            //    click: this.createBook
+            //},
+            //'citizenwindow button[action=change]': {
+            //    click: this.updateBook
+            //},
+            //'citizenwindow button[action=delete]': {
+            //    click: this.deleteBook
+            //},
+            //'bookwindow button[action=clear]': {
+            //    click: this.clearForm
         });
     },
     // обновление
@@ -97,8 +96,13 @@
         var view = Ext.widget('citizenwindow');
         view.down('form').getForm().reset();
     },
-    editBook: function (grid, record) {
+    editCitezen: function (grid, record) {
         var view = Ext.widget('citizenwindow');
         view.down('form').loadRecord(record);
+    },
+
+    SearchCitizen: function (grid, record) {
+
     }
+
 });
