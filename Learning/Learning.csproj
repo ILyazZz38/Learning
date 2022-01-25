@@ -45,10 +45,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.4.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.5.1.1\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="IBM.Data.Informix, Version=3.0.0.2, Culture=neutral, PublicKeyToken=7c307b91aa13d208, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Артур\Desktop\net452\IBM.Data.Informix.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -117,15 +128,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\CitizensController.cs" />
+    <Compile Include="CastleWind\CastleWindConf.cs" />
+    <Compile Include="Connection\Connect.cs" />
+    <Compile Include="Connection\IBMConnect\ConnectionIBM.cs" />
+    <Compile Include="Connection\IBMConnect\IfxCommandPar.cs" />
+    <Compile Include="Connection\IBMConnect\Interface\IIfxConnectEditTable.cs" />
+    <Compile Include="Connection\IBMConnect\Interface\IIfxConnectGetData.cs" />
+    <Compile Include="Connection\IBMConnect\Interface\IIfxCommandPar.cs" />
+    <Compile Include="Connection\Interface\IGetTable.cs" />
+    <Compile Include="Connection\Interface\IEditTable.cs" />
+    <Compile Include="Connection\ParsConfig\Interface\IParsConfig.cs" />
+    <Compile Include="Connection\ParsConfig\ParsConfig.cs" />
+    <Compile Include="Connection\SQL\Interface\ISQL.cs" />
+    <Compile Include="Connection\SQL\SQL.cs" />
+    <Compile Include="Controllers\EditTableColumnController.cs" />
+    <Compile Include="Controllers\JsonController.cs" />
+    <Compile Include="Controllers\old\CitizenController.cs" />
+    <Compile Include="Controllers\old\TestController.cs" />
+    <Compile Include="Controllers\old\CitizensController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\old\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Citizen.cs" />
-    <Compile Include="Models\SearchFilter.cs" />
-    <Compile Include="Models\SearchResult.cs" />
+    <Compile Include="Models\CitizenList.cs" />
+    <Compile Include="Models\CitizenPar.cs" />
+    <Compile Include="Models\ResResponse.cs" />
+    <Compile Include="Models\old\SearchFilter.cs" />
+    <Compile Include="Models\old\SearchResult.cs" />
+    <Compile Include="Models\SqlRes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +168,7 @@
     <Content Include="Scripts\app\data\update.php" />
     <Content Include="Scripts\app\model\Citizen.js" />
     <Content Include="Scripts\app\store\CitizenStore.js" />
+    <Content Include="Scripts\app\view\Add.js" />
     <Content Include="Scripts\app\view\Bar.js" />
     <Content Include="Scripts\app\view\Citizen.js" />
     <Content Include="Scripts\app\view\CitizenList.js" />
@@ -3095,7 +3128,10 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Add\" />
     <Folder Include="Views\Citizens\" />
+    <Folder Include="Views\Citizen\" />
+    <Folder Include="Views\Json\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>

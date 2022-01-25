@@ -1,4 +1,4 @@
 ﻿Ext.define('Learning.model.Citizen', {
     extend: 'Ext.data.Model',
-    fields: ['surname', 'firstname', 'fathername', 'birthday']
+    fields: ['id_citizen', 'surname', 'firstname', 'fathername', 'birthday']
 });

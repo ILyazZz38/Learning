@@ -7,10 +7,11 @@ namespace Learning.Models
 {
     public class Citizen
     {
-        public string SurName { get; set; }
-        public string FirstName { get; set; }
-        public string FatherName { get; set; }
-        public DateTime Birthday { get; set; }
+        public string id_citizen { get; set; }
+        public string surname { get; set; }
+        public string firstname { get; set; }
+        public string fathername { get; set; }
+        public string birthday { get; set; }
     }
 
     //public class CitizenDBContext : DBContext

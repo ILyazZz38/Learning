@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Learning.Models
 {
-    public class SearchResult
+    public class CitizenList
     {
-
-        public List<Citizen> citizens { get; set; }
+        public int total { get; set; }
+        public List<Citizen> newCitizens { get; set; }
     }
 }

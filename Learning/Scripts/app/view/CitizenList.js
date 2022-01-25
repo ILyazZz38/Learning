@@ -48,7 +48,7 @@
             {
                 xtype: 'panel',
                 title: 'Фильтры поиска',
-                name: 'searchFilters',
+                name: 'searchFilters', 
                 flex: 1,
                 items: [
                     {
@@ -63,7 +63,7 @@
                                 margin: '5 5 5 5',
                                 xtype: 'textfield',
                                 width: '15%',
-                                name: 'surnamefilter',
+                                name: 'surname',
                                 fieldLabel: 'Фамилия',
                                 allowBlank: false  // requires a non-empty value
                             },
@@ -71,7 +71,7 @@
                                 margin: '5 5 5 5',
                                 xtype: 'textfield',
                                 width: '15%',
-                                name: 'namefilter',
+                                name: 'firstname',
                                 fieldLabel: 'Имя',
                                 allowBlank: false  // requires a non-empty value
                             },
@@ -79,7 +79,7 @@
                                 margin: '5 5 5 5',
                                 xtype: 'textfield',
                                 width: '15%',
-                                name: 'fathernamefilter',
+                                name: 'fathername',
                                 fieldLabel: 'Отчество',
                                 allowBlank: false  // requires a non-empty value
                             }
@@ -97,22 +97,20 @@
                                 xtype: 'datefield',
                                 anchor: '100%',
                                 fieldLabel: 'Дата рождения с',
-                                name: 'firstdatefilter',
+                                name: 'firstdate',
                                 width: '15%',
                                 // The value matches the format; will be parsed and displayed using that format.
-                                format: 'd m Y',
-                                value: '2 4 1978'
+                                format: 'd.m.Y'
                             },
                             {
                                 margin: '5 5 5 5',
                                 xtype: 'datefield',
                                 anchor: '100%',
                                 fieldLabel: 'Дата рождения по',
-                                name: 'lastdatefilter',
+                                name: 'lastdate',
                                 width:'15%',
                                 // The value matches the format; will be parsed and displayed using that format.
-                                format: 'd m Y',
-                                value: '2 4 1978'
+                                format: 'd.m.Y'
                             }
                         ]
                     }                    
@@ -120,11 +118,23 @@
             },
             {
                 xtype: 'gridpanel',
-                name: 'resultSearch',
+                name: 'table',
                 title: 'Таблица',
                 store: 'CitizenStore',
                 flex: 2,
+                width: 1850,
+                height: 773,
                 columns: [
+                    {
+                        xtype: 'gridcolumn',
+                        draggable: false,
+                        flex: 1,
+                        align: 'left',
+                        hidden: true,
+                        dataIndex: 'id_citizen',
+                        name: 'id_citizen',
+                        text: 'Id'
+                    },
                     {
                         xtype: 'gridcolumn',
                         draggable: false,
@@ -157,9 +167,10 @@
                         draggable: false,
                         flex: 1,
                         align: 'left',
-                        dataIndex: 'fio',
+                        dataIndex: 'birthday',
                         name: 'birthday',
-                        format: 'd.m.Y',
+                        //type: 'date',
+                        //format: 'd/m/Y',
                         text: 'Дата рождения'
                     }
                     ]
