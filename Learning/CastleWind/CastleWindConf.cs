@@ -16,6 +16,11 @@ namespace Learning.CastleWind
 {
     public class CastleWindConf : IWindsorInstaller
     {
+        /// <summary>
+        /// Формирует настройки Castle Windsor контейнера 
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="store"></param>
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(Component.For<IGetTable>().ImplementedBy<Connect>().LifestyleTransient().Named("IGetTable"));

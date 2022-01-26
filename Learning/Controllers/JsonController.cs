@@ -13,6 +13,10 @@ namespace Learning.Controllers
 {
     public class JsonController : Controller
     {
+        /// <summary>
+        /// Получаем готовые данные для фронта в формате json
+        /// </summary>
+        /// <returns></returns>
         public ActionResult GetData()
         {
             CitizenList citizenList = new CitizenList();

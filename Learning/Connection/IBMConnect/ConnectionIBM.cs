@@ -19,15 +19,31 @@ namespace Learning.Connection
         IList<List<string>> listcolumn = new List<List<string>>();
 
         string sql = "";
+
+        /// <summary>
+        /// Приминение параметров команд
+        /// </summary>
+        /// <param name="commandIfxParams"></param>
         public ConnectionIBM(IIfxCommandPar commandIfxParams)
         {
             this.commandIfxParams = commandIfxParams;
         }
+
+        /// <summary>
+        /// Создание подключения
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <param name="sql"></param>
         public void CreateConnection(string configuration, string sql)
         {
             this.sql = sql;
             myConnection = new IfxConnection(configuration);
         }
+
+        /// <summary>
+        /// Чтение данных принятых с БД
+        /// </summary>
+        /// <returns></returns>
         public IList<List<string>> GetDataReader()
         {
             ifxCommand = new IfxCommand(sql, myConnection);
@@ -46,6 +62,12 @@ namespace Learning.Connection
             }
             return listcolumn;
         }
+
+        /// <summary>
+        /// Получение результата действий с БД
+        /// </summary>
+        /// <param name="sqlResult"></param>
+        /// <returns></returns>
         public ResResponse EditTable(SqlRes sqlResult)
         {
             ifxCommand = new IfxCommand(sql, myConnection);
@@ -66,10 +88,18 @@ namespace Learning.Connection
                 return resResponse;
             }
         }
+
+        /// <summary>
+        /// Открыть подключение
+        /// </summary>
         public void OpenConnection()
         {
             myConnection.Open();
         }
+
+        /// <summary>
+        /// Закрыть подключение
+        /// </summary>
         public void CloseConnection()
         {
             myConnection.Close();

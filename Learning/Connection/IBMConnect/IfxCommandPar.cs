@@ -12,6 +12,12 @@ namespace Learning.Connection
     {
         IfxCommand ifxCommand;
         SqlRes sqlRes;
+
+        /// <summary>
+        /// Создание параметров для SQL запроса
+        /// </summary>
+        /// <param name="ifxCommand"></param>
+        /// <param name="sqlRes">Модель</param>
         public void CreateParams(IfxCommand ifxCommand, SqlRes sqlRes)
         {
             this.ifxCommand = ifxCommand;
@@ -32,6 +38,10 @@ namespace Learning.Connection
                 DeleteColumnCreateParams();
             }
         }
+
+        /// <summary>
+        /// Создание параметров при добавлении гражданина в таблицу
+        /// </summary>
         void CreateColumnCreateParams()
         {
             ifxCommand.Parameters.Add(new IfxParameter("surname", sqlRes.citizenPar.surname));
@@ -39,6 +49,10 @@ namespace Learning.Connection
             ifxCommand.Parameters.Add(new IfxParameter("fathername", sqlRes.citizenPar.fathername));
             ifxCommand.Parameters.Add(new IfxParameter("birthday", sqlRes.citizenPar.birthday));
         }
+
+        /// <summary>
+        /// Создание параметров при обновлении гражданина в таблице
+        /// </summary>
         void UpdateColumnCreateParams()
         {
             ifxCommand.Parameters.Add(new IfxParameter("surname", sqlRes.citizenPar.surname));
@@ -47,6 +61,10 @@ namespace Learning.Connection
             ifxCommand.Parameters.Add(new IfxParameter("birthday", sqlRes.citizenPar.birthday));
             ifxCommand.Parameters.Add(new IfxParameter("id", sqlRes.citizenPar.id_citizen));
         }
+
+        /// <summary>
+        /// Создание параметров при удалении гражданина из таблицы
+        /// </summary>
         void DeleteColumnCreateParams()
         {
             ifxCommand.Parameters.Add(new IfxParameter("id", sqlRes.citizenPar.id_citizen));

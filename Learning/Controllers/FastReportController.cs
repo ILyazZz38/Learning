@@ -18,6 +18,11 @@ namespace Learning.Controllers
 {
     public class FastReportController : Controller
     {
+
+        /// <summary>
+        /// Получаем данные и формируем отчет
+        /// </summary>
+        /// <returns></returns>
         public FileResult GetReport()
         {
             var cont = new WindsorContainer();

@@ -13,8 +13,15 @@ namespace Learning.Connection
         IParsConfig configuration;
         IIfxConnectGetData connectionInformix;
         IIfxConnectEditTable connectionInfmxEditTable;
-        List<Citizen> users = new List<Citizen>();
+        List<Citizen> citizens = new List<Citizen>();
         IList<List<string>> listcolumn;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connectionInformix"></param>
+        /// <param name="configuration"></param>
+        /// <param name="connectionInfmxEditTable"></param>
         public Connect(IIfxConnectGetData connectionInformix, IParsConfig configuration, IIfxConnectEditTable connectionInfmxEditTable)
         {
 
@@ -22,6 +29,12 @@ namespace Learning.Connection
             this.configuration = configuration;
             this.connectionInfmxEditTable = connectionInfmxEditTable;
         }
+
+        /// <summary>
+        /// Получение данных
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public List<Citizen> GetDataTable(string sql)
         {
             configuration.ParseConfiguration();
@@ -37,13 +50,18 @@ namespace Learning.Connection
                 citizen.firstname = column[2];
                 citizen.fathername = column[3];
                 citizen.birthday = column[4];
-                users.Add(citizen);
+                citizens.Add(citizen);
             }
             connectionInformix.CloseConnection();
 
-            return users;
-
+            return citizens;
         }
+
+        /// <summary>
+        /// Изменение данных
+        /// </summary>
+        /// <param name="sqlRes"></param>
+        /// <returns></returns>
         public ResResponse EditDataTable(SqlRes sqlRes)
         {
             configuration.ParseConfiguration();

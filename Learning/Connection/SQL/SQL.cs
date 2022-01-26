@@ -12,11 +12,24 @@ namespace Learning.Connection.SQL
     {
         string NameTable = "citizens";
 
+        /// <summary>
+        /// Команда получения всех данных с таблицы
+        /// </summary>
+        /// <returns></returns>
         public string GetAllColumn()
         {
             string sql = "Select* FROM  " + NameTable;
             return sql;
         }
+
+        /// <summary>
+        /// Команда добавления нового гражданина в таблицу
+        /// </summary>
+        /// <param name="surNameText">Фамилия</param>
+        /// <param name="nameText">Имя</param>
+        /// <param name="fatherNameText">Отчество</param>
+        /// <param name="birthdayDate">Дата Рождения</param>
+        /// <returns></returns>
         public SqlRes CreateColumn(string surNameText, string nameText, string fatherNameText, DateTime birthdayDate)
         {
             string sql = "INSERT INTO " + NameTable + " (surname, firstname, fathername, birthday)" +
@@ -34,6 +47,16 @@ namespace Learning.Connection.SQL
 
             return sqlRes;
         }
+
+        /// <summary>
+        /// Команда обновления данных гражданине в таблице
+        /// </summary>
+        /// <param name="id">Ключ</param>
+        /// <param name="surnameText">Фамилия</param>
+        /// <param name="nameText">Имя</param>
+        /// <param name="fatherNameText">Отчество</param>
+        /// <param name="birthdayDate">Дата рождения</param>
+        /// <returns></returns>
         public SqlRes UpdateColumn(int id, string surnameText, string nameText, string fatherNameText, DateTime birthdayDate)
         {
             string sql = "UPDATE " + NameTable + " SET (surname, firstname, fathername, birthday) = " +
@@ -53,6 +76,12 @@ namespace Learning.Connection.SQL
 
             return sqlRes;
         }
+
+        /// <summary>
+        /// Команда удаления гражданина из таблицы
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public SqlRes DeleteColumn(int id)
         {
             string sql = "DELETE FROM " + NameTable + " WHERE id_citizen = ?";
