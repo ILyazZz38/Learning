@@ -25,7 +25,7 @@
                 click: this.DeleteCitizen
             },
             'citizenlist button[action=print]': {
-                click: this.LoadCitizens
+                click: this.Print
             }
        
         });
@@ -96,35 +96,60 @@
         var fathernameText = panel.down('textfield[name=fathername]').getValue();
         var firstDate = panel.down('datefield[name=firstdate]').getValue();
         var lastDate = panel.down('datefield[name=lastdate]').getValue();
-        if (surnameText.text != '' & firstnameText.text != '' & fathernameText.text != '' & firstDate.text != '' & lastDate.text != '') {
-            gridPanel.getStore().filter([{
-                property: 'surname',
-                value: surnameText
-            }
-            ]);
-            gridPanel.getStore().filter([{
-                property: 'firstname',
-                value: firstnameText
-            }
-            ]);
-            gridPanel.getStore().filter([{
-                property: 'fathername',
-                value: fathernameText
-            }
-            ]);
-            gridPanel.getStore().filter([{
-                filterFn: function (item) {
-                    var value = item.get('birthday');
-                    value = Ext.Date.parse(value, 'd.m.Y')
-                    return value < firstDate
-                }
-                //property: 'birthday',
-                //value: firstDate
-            }
-            ]);
+        if (surnameText == "" & firstnameText == "" & fathernameText == "" & firstDate == null & lastDate == null) {
+            gridPanel.store.remoteFilter = false;
+            gridPanel.store.clearFilter();
+            gridPanel.store.remoteFilter = true;
+            //gridPanel.store.filter(...);
+            gridPanel.getStore();
         }
         else {
-            gridPanel.getStore();
+            if (surnameText != "") {
+                gridPanel.getStore().filter([{
+                    property: 'surname',
+                    value: surnameText
+                }
+                ]);
+            }
+            
+            if (firstnameText != "") {
+                gridPanel.getStore().filter([{
+                    property: 'firstname',
+                    value: firstnameText
+                }
+                ]);
+            }
+            
+            if (fathernameText != "") {
+                gridPanel.getStore().filter([{
+                    property: 'fathername',
+                    value: fathernameText
+                }
+                ]);
+            }
+
+            if (firstDate != null) {
+                gridPanel.getStore().filter([{
+                    filterFn: function (item) {
+                        var value = item.get('birthday');
+                        value = value.substring(0, 10);
+                        value = Ext.Date.parse(value, 'd.m.Y')
+                        return value > firstDate
+                    }
+                }
+                ]);
+            }
+            if (lastDate != null) {
+                gridPanel.getStore().filter([{
+                    filterFn: function (item) {
+                        var value = item.get('birthday');
+                        value = value.substring(0, 10);
+                        value = Ext.Date.parse(value, 'd.m.Y')
+                        return value < lastDate
+                    }
+                }
+                ]);
+            }
         }
         //var jData = this.GetParams(panel);
 
@@ -492,5 +517,24 @@
         });
         win.add(form);
         win.show();
-    }
+    },
+
+    Print: function () {
+
+        //window.open('Report/GetReport', '.pdf')
+        var form = Ext.create('Ext.form.Panel', {
+            standardSubmit: true,
+            method: 'POST',
+            url: 'FastReport/GetReport',
+
+        });
+
+        // Call the submit to begin the file download.
+        form.submit({
+            target: '_blank', // Avoids leaving the page. 
+
+        });
+
+
+    },
 });

@@ -136,3 +136,10 @@ C:\Users\Артур\Desktop\Learning\Learning\obj\Debug\Learning.csproj.CoreComp
 C:\Users\Артур\Desktop\Learning\Learning\obj\Debug\Learning.csproj.CopyComplete
 C:\Users\Артур\Desktop\Learning\Learning\obj\Debug\Learning.dll
 C:\Users\Артур\Desktop\Learning\Learning\obj\Debug\Learning.pdb
+C:\Users\Артур\Desktop\Learning\Learning\bin\FastReport.dll
+C:\Users\Артур\Desktop\Learning\Learning\bin\FastReport.Web.dll
+C:\Users\Артур\Desktop\Learning\Learning\bin\FastReport.Compat.dll
+C:\Users\Артур\Desktop\Learning\Learning\bin\FastReport.Bars.dll
+C:\Users\Артур\Desktop\Learning\Learning\bin\FastReport.DataVisualization.dll
+C:\Users\Артур\Desktop\Learning\Learning\bin\FastReport.Editor.dll
+C:\Users\Артур\Desktop\Learning\Learning\bin\FastReport.xml
