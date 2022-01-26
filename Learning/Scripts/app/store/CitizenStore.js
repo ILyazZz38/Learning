@@ -10,7 +10,6 @@
             type: 'json',
             method: 'POST',
             root: 'newCitizens',
-            //totalProperty: 'total',
         }
     }
 });

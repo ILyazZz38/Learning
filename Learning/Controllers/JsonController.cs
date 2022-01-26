@@ -22,26 +22,6 @@ namespace Learning.Controllers
             IGetTable connect = cont.Resolve<IGetTable>();
             ISQL sql = cont.Resolve<ISQL>();
             List<Citizen> newCitizens = connect.GetDataTable(sql.GetAllColumn());
-
-            //int firstIndex = start;
-            //int End = end;
-            //int total = citizens.Count - start;
-            //if (total < End)
-            //{
-            //    End = total;
-            //}
-
-            //List<Citizen> newCitizens = new List<Citizen>();
-
-            //for (int i = 0; i < End; i++)
-            //{
-            //    newCitizens.Add(citizens[firstIndex]);
-            //    firstIndex++;
-            //}
-
-            //citizenList.total = citizens.Count;
-            //citizenList.newCitizens = newCitizens;
-
             return Json(newCitizens, JsonRequestBehavior.AllowGet);
         }
     }

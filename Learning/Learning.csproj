@@ -152,11 +152,7 @@
     <Compile Include="Controllers\EditTableColumnController.cs" />
     <Compile Include="Controllers\FastReportController.cs" />
     <Compile Include="Controllers\JsonController.cs" />
-    <Compile Include="Controllers\old\CitizenController.cs" />
-    <Compile Include="Controllers\old\TestController.cs" />
-    <Compile Include="Controllers\old\CitizensController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\old\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,8 +160,6 @@
     <Compile Include="Models\CitizenList.cs" />
     <Compile Include="Models\CitizenPar.cs" />
     <Compile Include="Models\ResResponse.cs" />
-    <Compile Include="Models\old\SearchFilter.cs" />
-    <Compile Include="Models\old\SearchResult.cs" />
     <Compile Include="Models\SqlRes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -174,12 +168,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\controller\Citizens.js" />
-    <Content Include="Scripts\app\data\update.php" />
     <Content Include="Scripts\app\model\Citizen.js" />
     <Content Include="Scripts\app\store\CitizenStore.js" />
     <Content Include="Scripts\app\view\Add.js" />
-    <Content Include="Scripts\app\view\Bar.js" />
-    <Content Include="Scripts\app\view\Citizen.js" />
     <Content Include="Scripts\app\view\CitizenList.js" />
     <Content Include="Scripts\app_start.js" />
     <Content Include="Scripts\extjs\ext-all.js" />
@@ -3157,7 +3148,6 @@
     <Content Include="Scripts\extjs\resources\ext-theme-classic\Readme.md" />
     <Content Include="Scripts\extjs\resources\ext-theme-gray\Readme.md" />
     <Content Include="Scripts\extjs\resources\ext-theme-neptune\Readme.md" />
-    <Content Include="Scripts\app\data\Citizens.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

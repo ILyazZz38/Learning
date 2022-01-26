@@ -18,11 +18,8 @@ namespace Learning.Controllers
 {
     public class FastReportController : Controller
     {
-        // GET: FastReport
         public FileResult GetReport()
         {
-            CitizenList citizenList = new CitizenList();
-
             var cont = new WindsorContainer();
             cont.Install(new CastleWindConf());
             IGetTable connect = cont.Resolve<IGetTable>();
@@ -52,13 +49,9 @@ namespace Learning.Controllers
                     table[4, row].Border.Lines = BorderLines.All;
                 }
                 webReport.Report.Prepare();
-
-                //webReport.Font.Name = "Arial";
                 webReport.Report.Export(new PDFExport(), stream);
                 stream.Position = 0;
             }
-
-
 
             return File(stream, "application/zip", "Report.pdf");
         }

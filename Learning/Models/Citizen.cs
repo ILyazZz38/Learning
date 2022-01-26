@@ -13,9 +13,4 @@ namespace Learning.Models
         public string fathername { get; set; }
         public string birthday { get; set; }
     }
-
-    //public class CitizenDBContext : DBContext
-    //{
-    //    public DbSet<Citizen> Citizens { get; set; }
-    //}
 }

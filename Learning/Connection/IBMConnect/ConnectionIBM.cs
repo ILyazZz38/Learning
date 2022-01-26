@@ -26,10 +26,7 @@ namespace Learning.Connection
         public void CreateConnection(string configuration, string sql)
         {
             this.sql = sql;
-
-
             myConnection = new IfxConnection(configuration);
-            //myConnection.ConnectionString = configuration;
         }
         public IList<List<string>> GetDataReader()
         {

@@ -12,13 +12,11 @@ namespace Learning.Connection.SQL
     {
         string NameTable = "citizens";
 
-
         public string GetAllColumn()
         {
             string sql = "Select* FROM  " + NameTable;
             return sql;
         }
-
         public SqlRes CreateColumn(string surNameText, string nameText, string fatherNameText, DateTime birthdayDate)
         {
             string sql = "INSERT INTO " + NameTable + " (surname, firstname, fathername, birthday)" +
@@ -32,8 +30,8 @@ namespace Learning.Connection.SQL
             citizen.firstname = nameText;
             citizen.fathername = fatherNameText;
             citizen.birthday = birthdayDate;
-
             sqlRes.citizenPar = citizen;
+
             return sqlRes;
         }
         public SqlRes UpdateColumn(int id, string surnameText, string nameText, string fatherNameText, DateTime birthdayDate)
@@ -51,8 +49,8 @@ namespace Learning.Connection.SQL
             citizen.fathername = fatherNameText;
             citizen.firstname = nameText;
             citizen.birthday = birthdayDate;
-
             sqlRes.citizenPar = citizen;
+
             return sqlRes;
         }
         public SqlRes DeleteColumn(int id)
@@ -64,8 +62,8 @@ namespace Learning.Connection.SQL
 
             CitizenPar citizen = new CitizenPar();
             citizen.id_citizen = id;
-
             sqlRes.citizenPar = citizen;
+
             return sqlRes;
         }
 

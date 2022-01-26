@@ -16,11 +16,10 @@ namespace Learning.Controllers
     {
         public ActionResult AddColumn(string surname, string firstname, string fathername, DateTime birthday)
         {
-            var cont = new WindsorContainer();//контейнер
-            cont.Install(new CastleWindConf());//Конфиг контейнера
-            IEditTable EditTable = cont.Resolve<IEditTable>();//
+            var cont = new WindsorContainer();
+            cont.Install(new CastleWindConf());
+            IEditTable EditTable = cont.Resolve<IEditTable>();
             ISQL sql = cont.Resolve<ISQL>();
-
             ResResponse resResponse = EditTable.EditDataTable(sql.CreateColumn(surname, firstname, fathername, birthday));
 
             return Json(resResponse, JsonRequestBehavior.AllowGet);
@@ -32,7 +31,6 @@ namespace Learning.Controllers
             cont.Install(new CastleWindConf());
             IEditTable EditTable = cont.Resolve<IEditTable>();
             ISQL sql = cont.Resolve<ISQL>();
-
             ResResponse resResponse = EditTable.EditDataTable(sql.UpdateColumn(id, surname, firstname, fathername, birthday));
 
             return Json(resResponse, JsonRequestBehavior.AllowGet);
@@ -44,7 +42,6 @@ namespace Learning.Controllers
             cont.Install(new CastleWindConf());
             IEditTable EditTable = cont.Resolve<IEditTable>();
             ISQL sql = cont.Resolve<ISQL>();
-
             ResResponse resResponse = EditTable.EditDataTable(sql.DeleteColumn(id));
 
             return Json(resResponse, JsonRequestBehavior.AllowGet);

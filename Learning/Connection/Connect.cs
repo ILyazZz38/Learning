@@ -15,7 +15,6 @@ namespace Learning.Connection
         IIfxConnectEditTable connectionInfmxEditTable;
         List<Citizen> users = new List<Citizen>();
         IList<List<string>> listcolumn;
-
         public Connect(IIfxConnectGetData connectionInformix, IParsConfig configuration, IIfxConnectEditTable connectionInfmxEditTable)
         {
 
@@ -26,8 +25,6 @@ namespace Learning.Connection
         public List<Citizen> GetDataTable(string sql)
         {
             configuration.ParseConfiguration();
-
-
             connectionInformix.CreateConnection(configuration.configurationConnect, sql);
             connectionInformix.OpenConnection();
 
@@ -50,7 +47,6 @@ namespace Learning.Connection
         public ResResponse EditDataTable(SqlRes sqlRes)
         {
             configuration.ParseConfiguration();
-
             connectionInfmxEditTable.CreateConnection(configuration.configurationConnect, sqlRes.sql);
             connectionInfmxEditTable.OpenConnection();
 

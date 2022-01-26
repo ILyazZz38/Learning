@@ -65,7 +65,7 @@
                                 width: '15%',
                                 name: 'surname',
                                 fieldLabel: 'Фамилия',
-                                allowBlank: false  // requires a non-empty value
+                                allowBlank: false
                             },
                             {
                                 margin: '5 5 5 5',
@@ -73,7 +73,7 @@
                                 width: '15%',
                                 name: 'firstname',
                                 fieldLabel: 'Имя',
-                                allowBlank: false  // requires a non-empty value
+                                allowBlank: false
                             },
                             {
                                 margin: '5 5 5 5',
@@ -81,7 +81,7 @@
                                 width: '15%',
                                 name: 'fathername',
                                 fieldLabel: 'Отчество',
-                                allowBlank: false  // requires a non-empty value
+                                allowBlank: false
                             }
                         ]
                     },
@@ -99,7 +99,6 @@
                                 fieldLabel: 'Дата рождения с',
                                 name: 'firstdate',
                                 width: '15%',
-                                // The value matches the format; will be parsed and displayed using that format.
                                 format: 'd.m.Y'
                             },
                             {
@@ -109,7 +108,6 @@
                                 fieldLabel: 'Дата рождения по',
                                 name: 'lastdate',
                                 width:'15%',
-                                // The value matches the format; will be parsed and displayed using that format.
                                 format: 'd.m.Y'
                             }
                         ]
@@ -169,36 +167,11 @@
                         align: 'left',
                         dataIndex: 'birthday',
                         name: 'birthday',
-                        //type: 'date',
-                        //format: 'd/m/Y',
                         text: 'Дата рождения'
                     }
                     ]
             }
         ];
-
-        //this.columns = [
-        //    { header: 'Фамилия', dataIndex: 'surname', flex: 1 },
-        //    { header: 'Имя', dataIndex: 'firstname', flex: 1 },
-        //    { header: 'Отчество', dataIndex: 'fathername', flex: 1 },
-        //    { header: 'Дата рождения', dataIndex: 'birthday', flex: 1 }
-        //];
-
-        //Ext.create('Ext.panel.Panel', {
-        //    layout: {
-        //        width: 120,
-        //        height: 120,
-        //        type: 'vbox',
-        //        align: 'stretch'
-        //    },
-        //    items: [{
-        //        xtype: 'panel',
-        //        title: 'Первая панель',
-        //        width: 120,
-        //        height: 120,
-        //    }],
-        //    renderTo: Ext.getBody()
-        //})
 
         this.callParent(arguments);
     }

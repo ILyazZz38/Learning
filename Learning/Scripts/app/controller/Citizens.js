@@ -9,9 +9,6 @@
             'viewport > citizenlist': {
                 itemclick: this.LoadCitizens
             },
-            //'citizenlist grid[name=resultSearch]': {
-            //    itemdblclick: this.LoadCitizens
-            //},
             'citizenlist button[action=search]': {
                 click: this.SearchCitizen
             },
@@ -31,61 +28,8 @@
         });
     },
 
-    //onRenderGrid: function (grid) {
-    //    var store = grid.getStore();
-    //    store.on({
-    //        beforeload: function (curStore, operation) {
-    //            operation.params = operation.params || {};
-    //            operation.params.someMyParametr = 'someMyValue';
-    //        }
-    //    });
-    //    store.load();
-    //},
-
     LoadCitizens: function (e, record) {
-        //if (e.id == "create") {
-        //    //var view = Ext.widget('CitizenList');
-        //    //view.down('form').loadRecord(record);
-        //    this.record = record;
-        //}
-        //if (e.id == "edit") {
-        //    //var view = Ext.widget('CitizenList');
-        //    //view.down('form').loadRecord(this.record);
-        //    this.record = record;
-        //};
-        //if (e.id == "delete") {
-        //    //var view = Ext.widget('CitizenList');
-        //    //view.down('form').loadRecord(this.record);
-        //    this.record = record;
-        //};
         this.record = record;
-
-
-
-
-//        var panel = button.up('citizenlist');
-//        var gridpanel = panel.down('gridpanel[name=resultsearch]');
-
-//        var storegridpanel = gridpanel.getstore();
-//        /*storegridpanel.load();*/
-//        var jdata = this.getparams(panel);
-//        ext.ajax.request({
-//            url: 'citizens/table',
-//            method: 'get',
-//            jsondata: jdata,
-//            success: function (response) {
-//                //var data = ext.decode(response.responsetext);
-//                //if (data.success) {
-//                    storegridpanel.load();
-///*                    store.load();*/
-//                //    ext.msg.alert('обновление', data.message);
-//                //}
-//                //else {
-//                //    ext.msg.alert('обновление', 'не удалось обновить');
-//                //}
-//            }
-//        });
-/*        storeGridPanel.load();*/
     },
 
     SearchCitizen: function (button) {
@@ -100,7 +44,6 @@
             gridPanel.store.remoteFilter = false;
             gridPanel.store.clearFilter();
             gridPanel.store.remoteFilter = true;
-            //gridPanel.store.filter(...);
             gridPanel.getStore();
         }
         else {
@@ -151,72 +94,12 @@
                 ]);
             }
         }
-        //var jData = this.GetParams(panel);
-
-        //Ext.Ajax.request({
-        //    url: 'Citizens/Table',
-        //    /*method: 'POST',*/
-        //    method: 'GET',
-        //    jsonData: jData,
-        //    success: function (response) {
-        //        //var data = Ext.decode(response.responseText);
-        //        //if (data.success) {
-        //            storeGridPanel.load();
-        //        //    Ext.Msg.alert('Обновление', data.message);
-        //        //}
-        //        //else {
-        //        //    Ext.Msg.alert('Обновление', 'Не удалось обновить');
-        //        //}
-        //    }
-        //});
-        /*storeGridPanel.load();*/
     },
 
-    //GetParams: function (panel) {
-    //    var surnameText = panel.down('textfield[name=surnamefilter]').getValue();
-    //    var nameText = panel.down('textfield[name=namefilter]').getValue();
-    //    var fathernameText = panel.down('textfield[name=fathernamefilter]').getValue();
-    //    var firstdateDate = panel.down('datefield[name=firstdatefilter]');
-    //    var lastdateDate = panel.down('datefield[name=lastdatefilter]');
-    //    var jData = {
-    //        surNameFilter: surnameText ? surnameText + '' : '',
-    //        nameFilter: nameText ? nameText + '' : '',
-    //        fatherNameFilter: fathernameText ? fathernameText + '' : '',
-    //        firstDateFilter: firstdateDate.getValue() ? Ext.Date.format(firstdateDate.getValue(), 'Y.m.d') : '',
-    //        lastDateFilter: lastdateDate.getValue() ? Ext.Date.format(lastdateDate.getValue(), 'Y.m.d') : '',
-    //    };
-    //    return jData;
-    //},
-    //GetAddParams: function (panel) {
-    //    var surnameText = panel.down('textfield[name=addSurName]').getValue();
-    //    var nameText = panel.down('textfield[name=addFirstName]').getValue();
-    //    var fathernameText = panel.down('textfield[name=addFatherName]').getValue();
-    //    var birthdayDate = panel.down('datefield[name=addBithday]');
-    //    var jData = {
-    //        SurName: surnameText ? surnameText + '' : '',
-    //        FirstName: nameText ? nameText + '' : '',
-    //        FatherName: fathernameText ? fathernameText + '' : '',
-    //        Birthday: birthdayDate.getValue() ? Ext.Date.format(birthdayDate.getValue(), 'Y.m.d') : '',
-    //    };
-    //    return jData;
-    //},
-    //GetEditParams: function (panel, id) {
-    //    var surnameText = panel.down('textfield[name=editSurName]').getValue();
-    //    var nameText = panel.down('textfield[name=editFirstName]').getValue();
-    //    var fathernameText = panel.down('textfield[name=editFatherName]').getValue();
-    //    var birthdayDate = panel.down('datefield[name=editBithday]');
-    //    var jData = {
-    //        SurName: surnameText ? surnameText + '' : '',
-    //        FirstName: nameText ? nameText + '' : '',
-    //        FatherName: fathernameText ? fathernameText + '' : '',
-    //        Birthday: birthdayDate.getValue() ? Ext.Date.format(birthdayDate.getValue(), 'Y.m.d') : '',
-    //        CitizenId: id,
-    //    };
-    //    return jData;
-    //},
     //Окно добавления
-    AddCitizen: function () {
-        var me = this;
+    AddCitizen: function (upButton) {
+        var list = upButton.up('citizenlist');
+        var gridPanel = list.down('gridpanel[name=table]');
 
         var form = new Ext.form.Panel({
             height: 165,
@@ -236,7 +119,7 @@
                             width: 300,
                             name: 'addSurName',
                             fieldLabel: 'Фамилия',
-                            allowBlank: false  // requires a non-empty value
+                            allowBlank: false
                         },
                         {
                             margin: '5 5 5 5',
@@ -244,7 +127,7 @@
                             width: 300,
                             name: 'addFirstName',
                             fieldLabel: 'Имя',
-                            allowBlank: false  // requires a non-empty value
+                            allowBlank: false
                         },
                         {
                             margin: '5 5 5 5',
@@ -252,7 +135,7 @@
                             width: 300,
                             name: 'addFatherName',
                             fieldLabel: 'Отчество',
-                            allowBlank: false  // requires a non-empty value
+                            allowBlank: false
                         },
                         {
                             margin: '5 5 5 5',
@@ -261,7 +144,6 @@
                             fieldLabel: 'Дата рождения',
                             name: 'addBithday',
                             width: 300,
-                            // The value matches the format; will be parsed and displayed using that format.
                             format: 'd m Y',
                             value: '2 4 1978'
                         },
@@ -273,15 +155,11 @@
                             width: 75,
                             listeners: {
                                 click: function (button) {
-                                    // this == the button, as we are in the local scope
-                                    //var container = button.up('container[name=addContainer]');
                                     var panel = button.up('form[name=addPanel]')
                                     var surname = panel.down('textfield[name=addSurName]').getValue();
                                     var firstname = panel.down('textfield[name=addFirstName]').getValue();
                                     var fathername = panel.down('textfield[name=addFatherName]').getValue();
                                     var birthday = panel.down('datefield[name=addBithday]').getValue();
-
-                                    /*var jData = me.GetAddParams(panel);*/
 
                                     if (surname.getValue != '' | firstname.getValue != '' | birthday.getValue != '') {
                                         Ext.Ajax.request({
@@ -306,7 +184,6 @@
                                     }
                                 },
                             }
-                            // The value matches the format; will be parsed and displayed using that format.
                         }
                     ]
                 }
@@ -318,9 +195,8 @@
         });
         win.add(form);
         win.show();
-        
-
     },
+
     //Окно реадактирования
     EditCitizen: function (upButton) {
         var list = upButton.up('citizenlist');
@@ -357,7 +233,7 @@
                             name: 'editSurName',
                             value: surName.getValue,
                             fieldLabel: 'Фамилия',
-                            allowBlank: false  // requires a non-empty value
+                            allowBlank: false
                         },
                         {
                             margin: '5 5 5 5',
@@ -366,7 +242,7 @@
                             name: 'editFirstName',
                             value: firstName.getValue,
                             fieldLabel: 'Имя',
-                            allowBlank: false  // requires a non-empty value
+                            allowBlank: false
                         },
                         {
                             margin: '5 5 5 5',
@@ -375,7 +251,7 @@
                             name: 'editFatherName',
                             value: fatherName.getValue,
                             fieldLabel: 'Отчество',
-                            allowBlank: false  // requires a non-empty value
+                            allowBlank: false
                         },
                         {
                             margin: '5 5 5 5',
@@ -385,7 +261,6 @@
                             value: Birthday.getValue,
                             fieldLabel: 'Дата рождения',
                             width: 300,
-                            // The value matches the format; will be parsed and displayed using that format.
                             format: 'd m Y'
                         },
                         {
@@ -396,13 +271,11 @@
                             width: 75,
                             listeners: {
                                 click: function (button) {
-                                    // this == the button, as we are in the local scope
-                                    //var container = button.up('container[name=addContainer]');
                                     var panel = button.up('form[name=editPanel]')
-                                    var surname = panel.down('textfield[name=editSurName]').getValue();
-                                    var firstname = panel.down('textfield[name=editFirstName]').getValue();
-                                    var fathername = panel.down('textfield[name=editFatherName]').getValue();
-                                    var birthday = panel.down('datefield[name=editBithday]').getValue();
+                                    //var surname = panel.down('textfield[name=editSurName]').getValue();
+                                    //var firstname = panel.down('textfield[name=editFirstName]').getValue();
+                                    //var fathername = panel.down('textfield[name=editFatherName]').getValue();
+                                    //var birthday = panel.down('datefield[name=editBithday]').getValue();
                                     var id;
                                     if (gridPanel.getSelectionModel().hasSelection()) {
                                         var selectionModel = gridPanel.getSelectionModel()
@@ -418,7 +291,6 @@
                                                 var data = Ext.decode(response.responseText);
                                                 if (data.success) {
                                                     Ext.Msg.alert('Изменение', data.message);
-                                                    /*var store = Ext.widget('editColumn').getStore();*/
                                                     gridPanel.store.load();
                                                     var win = panel.up('window[name=editWin]');
                                                     win.close();
@@ -434,7 +306,6 @@
                                     }
                                 },
                             }
-                            // The value matches the format; will be parsed and displayed using that format.
                         }
                     ]
                 }
@@ -447,6 +318,7 @@
         win.add(form);
         win.show();
     },
+
     //Окно подтверждения удаления
     DeleteCitizen: function (upButton) {
         var list = upButton.up('citizenlist');
@@ -469,7 +341,7 @@
                     listeners: {
                         click: function (button) {
                             var id;
-                            var panel = button.up('form[name=editPanel]')
+                            var panel = button.up('form[name=delPanel]')
                             if (gridPanel.getSelectionModel().hasSelection()) {
                                 var selectionModel = gridPanel.getSelectionModel()
                                 var selectedRecords = selectionModel.getSelection()
@@ -482,10 +354,6 @@
                                     var data = Ext.decode(response.responseText);
                                     if (data.success) {
                                         Ext.Msg.alert('Удаление', data.message);
-                                        //var store = Ext.widget('citizenlist').getStore();
-                                        //var record = store.getById(id);
-                                        //store.remove(record);
-                                        //gridPanel.getForm.reset();
                                         gridPanel.store.load();
                                         var win = panel.up('window[name=delWin]');
                                         win.close();
@@ -505,7 +373,9 @@
                     text: 'Не удалять данные!',
                     listeners: {
                         click: function (button) {
-
+                            var panel = button.up('form[name=delPanel]')
+                            var win = panel.up('window[name=delWin]');
+                            win.close();
                         }
                     }
                 }
@@ -520,21 +390,13 @@
     },
 
     Print: function () {
-
-        //window.open('Report/GetReport', '.pdf')
         var form = Ext.create('Ext.form.Panel', {
             standardSubmit: true,
             method: 'POST',
             url: 'FastReport/GetReport',
-
         });
-
-        // Call the submit to begin the file download.
         form.submit({
-            target: '_blank', // Avoids leaving the page. 
-
+            target: '_blank',
         });
-
-
     },
 });
