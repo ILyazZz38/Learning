@@ -40,9 +40,7 @@
         var firstnameText = panel.down('textfield[name=firstname]').getValue();
         var fathernameText = panel.down('textfield[name=fathername]').getValue();
         var firstDate = panel.down('datefield[name=firstdate]').getValue();
-        var lastDate = panel.down('datefield[name=lastdate]').getValue();
-        panel.surnameFilter = 1;
-        
+        var lastDate = panel.down('datefield[name=lastdate]').getValue();        
 
         if (surnameText == "") {
             surnameText = '*'
@@ -61,11 +59,6 @@
         }
 
         var gridStore = gridPanel.getStore();
-        //store.on('load', function (store, records, successful, eOpts) {
-        //    if (successful) {
-        //        panel.totalCountGilec = store.getTotalCount();
-        //    }
-        //});
         gridStore.load({
             params: {
                 surname: surnameText,
@@ -73,6 +66,42 @@
                 fathername: fathernameText,
                 firstBirthday: firstDate,
                 lastBirthday: lastDate
+            },
+            callback: function (records, operation, success) {
+                console.log(operation.response.responseText);
+                var data = Ext.decode(operation.response.responseText);
+                if (data.success) {
+                    if (surnameText == "") {
+                        globalSurname = '*'
+                    }
+                    else {
+                        globalSurname = surnameText;
+                    }
+                    if (firstnameText == "") {
+                        globalFirstname = '*'
+                    }
+                    else {
+                        globalFirstname = firstnameText;
+                    }
+                    if (fathernameText == "") {
+                        globalFathername = '*'
+                    }
+                    else {
+                        globalFathername = fathernameText;
+                    }
+                    if (firstDate == null) {
+                        globalFirstdate = '01 01 0001'
+                    }
+                    else {
+                        globalFirstdate = firstDate;
+                    } '*'
+                    if (lastDate == null) {
+                        globalLastdate = '*'
+                    }
+                    else {
+                        globalLastdate = lastDate;
+                    }
+                }
             },
         });
     },
@@ -402,46 +431,43 @@
     },
 
     Print: function (button) {
-        var panel = button.up('citizenlist');
-        var surnameText = panel.down('textfield[name=surname]').getValue();
-        var firstnameText = panel.down('textfield[name=firstname]').getValue();
-        var fathernameText = panel.down('textfield[name=fathername]').getValue();
-        var firstDate = panel.down('datefield[name=firstdate]').getValue();
-        var lastDate = panel.down('datefield[name=lastdate]').getValue();
+        //var panel = button.up('citizenlist');
+        //var surnameText = panel.down('textfield[name=surname]').getValue();
+        //var firstnameText = panel.down('textfield[name=firstname]').getValue();
+        //var fathernameText = panel.down('textfield[name=fathername]').getValue();
+        //var firstDate = panel.down('datefield[name=firstdate]').getValue();
+        //var lastDate = panel.down('datefield[name=lastdate]').getValue();
 
-        if (surnameText == "") {
-            surnameText = '*'
-        }
-        if (firstnameText == "") {
-            firstnameText = '*'
-        }
-        if (fathernameText == "") {
-            fathernameText = '*'
-        }
-        if (firstDate == null) {
-            firstDate = '01 01 0001'
-        }
-        if (lastDate == null) {
-            lastDate = '01 01 0001'
-        }
+        //if (surnameText == "") {
+        //    surnameText = '*'
+        //}
+        //if (firstnameText == "") {
+        //    firstnameText = '*'
+        //}
+        //if (fathernameText == "") {
+        //    fathernameText = '*'
+        //}
+        //if (firstDate == null) {
+        //    firstDate = '01 01 0001'
+        //}
+        //if (lastDate == null) {
+        //    lastDate = '01 01 0001'
+        //}
 
         
 
         var form = Ext.create('Ext.form.Panel', {
                         standardSubmit: true,
-            /*            method: 'POST',*/
-            /*            url: 'FastReport/GetReport',*/
         })
 
         form.getForm().submit({
             url: 'FastReport/GetReport',
-            /*target: '_blank',*/
             params: {
-                surname: "*",
-                firstname: firstnameText,
-                fathername: fathernameText,
-                firstBirthday: firstDate,
-                lastBirthday: lastDate
+                surname: globalSurname,
+                firstname: globalFirstname,
+                fathername: globalFathername,
+                firstBirthday: globalFirstdate,
+                lastBirthday: globalLastdate
             },
         });
     },

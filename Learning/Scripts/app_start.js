@@ -4,7 +4,13 @@ Ext.application({
 	appFolder: 'Scripts/app',
 	controllers: ['Citizens'],
 
-	launch: function() {
+	launch: function () {
+		var globalSurname;
+		var globalFirstname;
+		var globalFathername;
+		var globalFirstdate;
+		var globalLastdate;
+
 		Ext.create('Ext.container.Viewport', {
 			layout: 'fit',
 			items: {
