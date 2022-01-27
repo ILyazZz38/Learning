@@ -41,10 +41,10 @@
         var firstDate = panel.down('datefield[name=firstdate]').getValue();
         var lastDate = panel.down('datefield[name=lastdate]').getValue();
         if (surnameText == "" & firstnameText == "" & fathernameText == "" & firstDate == null & lastDate == null) {
-            gridPanel.store.remoteFilter = false;
-            gridPanel.store.clearFilter();
-            gridPanel.store.remoteFilter = true;
-            gridPanel.getStore();
+            //gridPanel.store.remoteFilter = false;
+            //gridPanel.store.clearFilter();
+            //gridPanel.store.remoteFilter = true;
+            //gridPanel.getStore();
         }
         else {
             if (surnameText != "") {
@@ -212,6 +212,8 @@
             firstName = selectedRecords[0].get('firstname');
             fatherName = selectedRecords[0].get('fathername');
             Birthday = selectedRecords[0].get('birthday');
+            Birthday = Birthday.substring(0, 10);
+            Birthday = Ext.Date.parse(Birthday, 'd.m.Y')
         }
         var me = this;
         var form = new Ext.form.Panel({
@@ -231,7 +233,7 @@
                             xtype: 'textfield',
                             width: 300,
                             name: 'editSurName',
-                            value: surName.getValue,
+                            value: surName,
                             fieldLabel: 'Фамилия',
                             allowBlank: false
                         },
@@ -240,7 +242,7 @@
                             xtype: 'textfield',
                             width: 300,
                             name: 'editFirstName',
-                            value: firstName.getValue,
+                            value: firstName,
                             fieldLabel: 'Имя',
                             allowBlank: false
                         },
@@ -249,7 +251,7 @@
                             xtype: 'textfield',
                             width: 300,
                             name: 'editFatherName',
-                            value: fatherName.getValue,
+                            value: fatherName,
                             fieldLabel: 'Отчество',
                             allowBlank: false
                         },
@@ -258,7 +260,7 @@
                             xtype: 'datefield',
                             anchor: '100%',
                             name: 'editBithday',
-                            value: Birthday.getValue,
+                            value: Birthday,
                             fieldLabel: 'Дата рождения',
                             width: 300,
                             format: 'd m Y'
@@ -272,10 +274,6 @@
                             listeners: {
                                 click: function (button) {
                                     var panel = button.up('form[name=editPanel]')
-                                    //var surname = panel.down('textfield[name=editSurName]').getValue();
-                                    //var firstname = panel.down('textfield[name=editFirstName]').getValue();
-                                    //var fathername = panel.down('textfield[name=editFatherName]').getValue();
-                                    //var birthday = panel.down('datefield[name=editBithday]').getValue();
                                     var id;
                                     if (gridPanel.getSelectionModel().hasSelection()) {
                                         var selectionModel = gridPanel.getSelectionModel()

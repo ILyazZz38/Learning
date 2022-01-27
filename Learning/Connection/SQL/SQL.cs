@@ -18,7 +18,13 @@ namespace Learning.Connection.SQL
         /// <returns></returns>
         public string GetAllColumn()
         {
-            string sql = "Select* FROM  " + NameTable;
+            string sql = "Select * FROM  " + NameTable;
+            return sql;
+        }
+
+        public string SearchColumn(string surnameText, string nameText, string fatherNameText, DateTime firstBirthdayDate, DateTime lastBirthdayDate)
+        {
+            string sql = "Select * FROM  " + NameTable + "";
             return sql;
         }
 

@@ -11,6 +11,7 @@ namespace Learning.Connection.SQL.Interface
         string GetAllColumn();
         SqlRes CreateColumn(string surNameText, string nameText, string fatherNameText, DateTime birthdayDate);
         SqlRes UpdateColumn(int id, string surnameText, string nameText, string fatherNameText, DateTime birthdayDate);
+        SqlRes SearchColumn(string surnameText, string nameText, string fatherNameText, DateTime firstBirthdayDate, DateTime lastBirthdayDate);
         SqlRes DeleteColumn(int id);
     }
 }
