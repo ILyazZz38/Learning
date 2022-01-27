@@ -7,7 +7,7 @@
     
 
     initComponent: function () {
-        var surnameFilter = null;
+        var surnameFilter = 1;
         var firstnameFilter = null;
         var fathernameFilter = null;
         var firstdateFilter = null;

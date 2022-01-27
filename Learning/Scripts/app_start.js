@@ -10,6 +10,7 @@ Ext.application({
 		var globalFathername;
 		var globalFirstdate;
 		var globalLastdate;
+		var getFilter;
 
 		Ext.create('Ext.container.Viewport', {
 			layout: 'fit',
