@@ -1,7 +1,7 @@
 ﻿Ext.define('Learning.store.CitizenStore', {
     extend: 'Ext.data.Store',
     model: 'Learning.model.Citizen',
-    autoLoad: true,
+    autoLoad: false,
     storeId: 'CitizenStore',
     proxy: {
         type: 'ajax',
@@ -9,7 +9,7 @@
         reader: {
             type: 'json',
             method: 'POST',
-            root: 'newCitizens',
+            root: 'citizens',
         }
     }
 });

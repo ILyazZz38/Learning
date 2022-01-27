@@ -160,6 +160,7 @@
     <Compile Include="Models\CitizenList.cs" />
     <Compile Include="Models\CitizenPar.cs" />
     <Compile Include="Models\ResResponse.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="Models\SqlRes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

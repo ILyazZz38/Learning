@@ -54,16 +54,16 @@ namespace Learning.Controllers
             return Json(resResponse, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult SearchColumn(string surname, string firstname, string fathername, DateTime firstBirthday, DateTime lastBirthday)
-        {
-            var cont = new WindsorContainer();
-            cont.Install(new CastleWindConf());
-            IEditTable EditTable = cont.Resolve<IEditTable>();
-            ISQL sql = cont.Resolve<ISQL>();
-            ResResponse resResponse = EditTable.EditDataTable(sql.SearchColumn(surname, firstname, fathername, firstBirthday, lastBirthday));
+        //public ActionResult SearchColumn(string surname, string firstname, string fathername, DateTime firstBirthday, DateTime lastBirthday)
+        //{
+        //    var cont = new WindsorContainer();
+        //    cont.Install(new CastleWindConf());
+        //    IEditTable EditTable = cont.Resolve<IEditTable>();
+        //    ISQL sql = cont.Resolve<ISQL>();
+        //    ResResponse resResponse = EditTable.EditDataTable(sql.SearchColumn(surname, firstname, fathername, firstBirthday, lastBirthday));
 
-            return Json(resResponse, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(resResponse, JsonRequestBehavior.AllowGet);
+        //}
 
         /// <summary>
         /// Формируем строку подключения и отправляем данные, читаем ответ в json формате

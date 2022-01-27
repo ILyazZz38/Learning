@@ -23,13 +23,13 @@ namespace Learning.Controllers
         /// Получаем данные и формируем отчет
         /// </summary>
         /// <returns></returns>
-        public FileResult GetReport()
+        public FileResult GetReport(string surname, string firstname, string fathername, DateTime firstBirthday, DateTime lastBirthday)
         {
             var cont = new WindsorContainer();
             cont.Install(new CastleWindConf());
             IGetTable connect = cont.Resolve<IGetTable>();
             ISQL sql = cont.Resolve<ISQL>();
-            List<Citizen> citizens = connect.GetDataTable(sql.GetAllColumn());
+            List<Citizen> citizens = connect.GetDataTable(sql.GetAllColumn(surname, firstname, fathername, firstBirthday, lastBirthday));
 
             Stream stream = new MemoryStream();
             WebReport webReport = new WebReport();

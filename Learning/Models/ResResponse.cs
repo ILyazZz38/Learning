@@ -9,5 +9,7 @@ namespace Learning.Models
     {
         public bool success { get; set; }
         public string message { get; set; }
+
+        public List<Citizen> citizens { get; set; }
     }
 }

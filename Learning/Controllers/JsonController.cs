@@ -17,16 +17,28 @@ namespace Learning.Controllers
         /// Получаем готовые данные для фронта в формате json
         /// </summary>
         /// <returns></returns>
-        public ActionResult GetData()
+        public ActionResult GetData(string surname,
+                                    string firstname,
+                                    string fathername ,
+                                    DateTime firstBirthday,
+                                    DateTime lastBirthday)
         {
             CitizenList citizenList = new CitizenList();
+
+            
 
             var cont = new WindsorContainer();
             cont.Install(new CastleWindConf());
             IGetTable connect = cont.Resolve<IGetTable>();
             ISQL sql = cont.Resolve<ISQL>();
-            List<Citizen> newCitizens = connect.GetDataTable(sql.GetAllColumn());
-            return Json(newCitizens, JsonRequestBehavior.AllowGet);
+            List<Citizen> newCitizens = connect.GetDataTable(sql.GetAllColumn(surname, firstname, fathername, firstBirthday, lastBirthday));
+            ResResponse resResponse = new ResResponse()
+            {
+                success = true,
+                message = "Операция выполнена",
+                citizens = newCitizens
+            };
+            return Json(resResponse, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -16,17 +16,56 @@ namespace Learning.Connection.SQL
         /// Команда получения всех данных с таблицы
         /// </summary>
         /// <returns></returns>
-        public string GetAllColumn()
+        public string GetAllColumn(string surname, string firstname, string fathername, DateTime firstBirthday, DateTime lastBirthday)
         {
-            string sql = "Select * FROM  " + NameTable;
+            string sql = "SELECT  id_citizen, surname, firstname, fathername, birthday FROM  " + NameTable;
+            bool isNotFrirst = false;
+            if (surname != "*" | firstname != "*" | fathername != "*" | firstBirthday != DateTime.MinValue | lastBirthday != DateTime.MinValue)
+            {
+                sql = sql + " WHERE ";
+                if (surname != "*")
+                {
+                    sql = sql + " surname = '" + surname + "'";
+                    isNotFrirst = true;
+                }
+                if (firstname != "*")
+                {
+                    if (isNotFrirst)
+                        sql = sql + " AND";
+                    sql = sql + " firstname = '" + firstname + "'";
+                    isNotFrirst = true;
+                }
+                if (fathername != "*")
+                {
+                    if (isNotFrirst)
+                        sql = sql + " AND";
+                    sql = sql + " fathername = '" + fathername + "'";
+                    isNotFrirst = true;
+                }
+                if (firstBirthday != DateTime.MinValue)
+                {
+                    if (isNotFrirst)
+                        sql = sql + " AND";
+                    sql = sql + " birthday > '" + firstBirthday.Day + "." + firstBirthday.Month + "." + firstBirthday.Year + "'";
+                    isNotFrirst = true;
+                }
+                if (lastBirthday != DateTime.MinValue)
+                {
+                    if (isNotFrirst)
+                        sql = sql + " and";
+                    sql = sql + " birthday < '" + lastBirthday.Day + "." + lastBirthday.Month + "." + lastBirthday.Year + "'";
+                    isNotFrirst = true;
+                }
+                
+            }
             return sql;
         }
 
-        public string SearchColumn(string surnameText, string nameText, string fatherNameText, DateTime firstBirthdayDate, DateTime lastBirthdayDate)
-        {
-            string sql = "Select * FROM  " + NameTable + "";
-            return sql;
-        }
+        //public string SearchColumn(string surnameText, string nameText, string fatherNameText, DateTime firstBirthdayDate, DateTime lastBirthdayDate)
+        //{
+        //    string sql = "Select * FROM  " + NameTable + "";
+        //    return sql;
+        //}
 
         /// <summary>
         /// Команда добавления нового гражданина в таблицу

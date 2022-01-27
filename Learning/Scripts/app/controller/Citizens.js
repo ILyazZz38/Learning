@@ -41,59 +41,82 @@
         var firstDate = panel.down('datefield[name=firstdate]').getValue();
         var lastDate = panel.down('datefield[name=lastdate]').getValue();
         if (surnameText == "" & firstnameText == "" & fathernameText == "" & firstDate == null & lastDate == null) {
-            //gridPanel.store.remoteFilter = false;
-            //gridPanel.store.clearFilter();
-            //gridPanel.store.remoteFilter = true;
-            //gridPanel.getStore();
+            //Ext.Ajax.request({
+            //    url: 'Json/GetData',
+            //    params: { surname: surnameText, firstname: firstnameText, fathername: fathernameText, firstBirthday: firstDate, lastBirthday: lastDate },
+            //    success: function (response, options) {
+            //        var data = Ext.decode(response.responseText);
+            //        if (data.success) {
+            //            Ext.Msg.alert('Поиск', data.message);
+            //            gridPanel.store.load();
+            //        }
+            //        else {
+            //            Ext.Msg.alert('Создание', 'Не удалось найти');
+            //        }
+            //    }
+            //});
         }
-        else {
-            if (surnameText != "") {
-                gridPanel.getStore().filter([{
-                    property: 'surname',
-                    value: surnameText
-                }
-                ]);
-            }
-            
-            if (firstnameText != "") {
-                gridPanel.getStore().filter([{
-                    property: 'firstname',
-                    value: firstnameText
-                }
-                ]);
-            }
-            
-            if (fathernameText != "") {
-                gridPanel.getStore().filter([{
-                    property: 'fathername',
-                    value: fathernameText
-                }
-                ]);
-            }
+        //else {
+        //    if (surnameText == "") {
+        //        surnameText = '*'
+        //    }
+        //    if (firstnameText == "") {
+        //        firstnameText = '*'
+        //    }
+        //    if (fathernameText == "") {
+        //        fathernameText = '*'
+        //    }
+        //    if (firstDate == null) {
+        //        firstDate = '01 01 0001'
+        //        firstDate = Ext.Date.parse(firstDate, 'd m Y')
+        //    }
+        //    if (lastDate == null) {
+        //        lastDate = '01 01 0001'
+        //        lastDate = Ext.Date.parse(lastDate, 'd m Y')
+        //    }
+        //    Ext.Ajax.request({
+        //        url: 'Json/GetData',
+        //        params: { surname: surnameText, firstname: firstnameText, fathername: fathernameText, firstBirthday: firstDate, lastBirthday: lastDate },
+        //        success: function (response, options) {
+        //            var data = Ext.decode(response.responseText);
+        //            if (data.success) {
+        //                Ext.Msg.alert('Поиск', data.message);
+        //                gridPanel.store.load();
+        //            }
+        //            else {
+        //                Ext.Msg.alert('Создание', 'Не удалось найти');
+        //            }
+        //        }
+        //    });
+        //}
 
-            if (firstDate != null) {
-                gridPanel.getStore().filter([{
-                    filterFn: function (item) {
-                        var value = item.get('birthday');
-                        value = value.substring(0, 10);
-                        value = Ext.Date.parse(value, 'd.m.Y')
-                        return value > firstDate
-                    }
-                }
-                ]);
+            if (surnameText == "") {
+                surnameText = '*'
             }
-            if (lastDate != null) {
-                gridPanel.getStore().filter([{
-                    filterFn: function (item) {
-                        var value = item.get('birthday');
-                        value = value.substring(0, 10);
-                        value = Ext.Date.parse(value, 'd.m.Y')
-                        return value < lastDate
-                    }
-                }
-                ]);
+            if (firstnameText == "") {
+                firstnameText = '*'
             }
-        }
+            if (fathernameText == "") {
+                fathernameText = '*'
+            }
+        if (firstDate == null) {
+                firstDate = '01 01 0001'
+            first = Ext.Date.parse(firstDate, 'd m Y')
+            }
+            if (lastDate == null) {
+                lastDate = '01 01 0001'
+                last = Ext.Date.parse(lastDate, 'd m Y')
+            }
+        var gridStore = gridPanel.getStore();
+        gridStore.load({
+            params: {
+                surname: surnameText,
+                firstname: firstnameText,
+                fathername: fathernameText,
+                firstBirthday: firstDate,
+                lastBirthday: lastDate
+            },
+        });
     },
 
     //Окно добавления
