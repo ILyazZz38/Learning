@@ -40,56 +40,6 @@
         var fathernameText = panel.down('textfield[name=fathername]').getValue();
         var firstDate = panel.down('datefield[name=firstdate]').getValue();
         var lastDate = panel.down('datefield[name=lastdate]').getValue();
-        if (surnameText == "" & firstnameText == "" & fathernameText == "" & firstDate == null & lastDate == null) {
-            //Ext.Ajax.request({
-            //    url: 'Json/GetData',
-            //    params: { surname: surnameText, firstname: firstnameText, fathername: fathernameText, firstBirthday: firstDate, lastBirthday: lastDate },
-            //    success: function (response, options) {
-            //        var data = Ext.decode(response.responseText);
-            //        if (data.success) {
-            //            Ext.Msg.alert('Поиск', data.message);
-            //            gridPanel.store.load();
-            //        }
-            //        else {
-            //            Ext.Msg.alert('Создание', 'Не удалось найти');
-            //        }
-            //    }
-            //});
-        }
-        //else {
-        //    if (surnameText == "") {
-        //        surnameText = '*'
-        //    }
-        //    if (firstnameText == "") {
-        //        firstnameText = '*'
-        //    }
-        //    if (fathernameText == "") {
-        //        fathernameText = '*'
-        //    }
-        //    if (firstDate == null) {
-        //        firstDate = '01 01 0001'
-        //        firstDate = Ext.Date.parse(firstDate, 'd m Y')
-        //    }
-        //    if (lastDate == null) {
-        //        lastDate = '01 01 0001'
-        //        lastDate = Ext.Date.parse(lastDate, 'd m Y')
-        //    }
-        //    Ext.Ajax.request({
-        //        url: 'Json/GetData',
-        //        params: { surname: surnameText, firstname: firstnameText, fathername: fathernameText, firstBirthday: firstDate, lastBirthday: lastDate },
-        //        success: function (response, options) {
-        //            var data = Ext.decode(response.responseText);
-        //            if (data.success) {
-        //                Ext.Msg.alert('Поиск', data.message);
-        //                gridPanel.store.load();
-        //            }
-        //            else {
-        //                Ext.Msg.alert('Создание', 'Не удалось найти');
-        //            }
-        //        }
-        //    });
-        //}
-
             if (surnameText == "") {
                 surnameText = '*'
             }
@@ -99,13 +49,11 @@
             if (fathernameText == "") {
                 fathernameText = '*'
             }
-        if (firstDate == null) {
+            if (firstDate == null) {
                 firstDate = '01 01 0001'
-            first = Ext.Date.parse(firstDate, 'd m Y')
             }
             if (lastDate == null) {
                 lastDate = '01 01 0001'
-                last = Ext.Date.parse(lastDate, 'd m Y')
             }
         var gridStore = gridPanel.getStore();
         gridStore.load({
@@ -157,8 +105,7 @@
                             xtype: 'textfield',
                             width: 300,
                             name: 'addFatherName',
-                            fieldLabel: 'Отчество',
-                            allowBlank: false
+                            fieldLabel: 'Отчество'
                         },
                         {
                             margin: '5 5 5 5',
@@ -167,6 +114,7 @@
                             fieldLabel: 'Дата рождения',
                             name: 'addBithday',
                             width: 300,
+                            allowBlank: false,
                             format: 'd m Y',
                             value: '2 4 1978'
                         },
@@ -192,7 +140,17 @@
                                                 var data = Ext.decode(response.responseText);
                                                 if (data.success) {
                                                     Ext.Msg.alert('Добавление гражданина', data.message);
-                                                    gridPanel.store.load();
+                                                    var date = '01 01 0001'
+                                                    var gridStore = gridPanel.getStore();
+                                                    gridStore.load({
+                                                        params: {
+                                                            surname: "*",
+                                                            firstname: "*",
+                                                            fathername: "*",
+                                                            firstBirthday: date,
+                                                            lastBirthday: date
+                                                        },
+                                                    });
                                                     var win = panel.up('window[name=addWin]');
                                                     win.close();
                                                 }
@@ -275,8 +233,7 @@
                             width: 300,
                             name: 'editFatherName',
                             value: fatherName,
-                            fieldLabel: 'Отчество',
-                            allowBlank: false
+                            fieldLabel: 'Отчество'
                         },
                         {
                             margin: '5 5 5 5',
@@ -286,6 +243,7 @@
                             value: Birthday,
                             fieldLabel: 'Дата рождения',
                             width: 300,
+                            allowBlank: false,
                             format: 'd m Y'
                         },
                         {
@@ -298,6 +256,10 @@
                                 click: function (button) {
                                     var panel = button.up('form[name=editPanel]')
                                     var id;
+                                    var surname = panel.down('textfield[name=editSurName]').getValue();
+                                    var firstname = panel.down('textfield[name=editFirstName]').getValue();
+                                    var fathername = panel.down('textfield[name=editFatherName]').getValue();
+                                    var birthday = panel.down('datefield[name=editBithday]').getValue();
                                     if (gridPanel.getSelectionModel().hasSelection()) {
                                         var selectionModel = gridPanel.getSelectionModel()
                                         var selectedRecords = selectionModel.getSelection()
@@ -312,7 +274,17 @@
                                                 var data = Ext.decode(response.responseText);
                                                 if (data.success) {
                                                     Ext.Msg.alert('Изменение', data.message);
-                                                    gridPanel.store.load();
+                                                    var date = '01 01 0001'
+                                                    var gridStore = gridPanel.getStore();
+                                                    gridStore.load({
+                                                        params: {
+                                                            surname: "*",
+                                                            firstname: "*",
+                                                            fathername: "*",
+                                                            firstBirthday: date,
+                                                            lastBirthday: date
+                                                        },
+                                                    });
                                                     var win = panel.up('window[name=editWin]');
                                                     win.close();
                                                 }
@@ -375,7 +347,17 @@
                                     var data = Ext.decode(response.responseText);
                                     if (data.success) {
                                         Ext.Msg.alert('Удаление', data.message);
-                                        gridPanel.store.load();
+                                        var date = '01 01 0001'
+                                        var gridStore = gridPanel.getStore();
+                                        gridStore.load({
+                                            params: {
+                                                surname: "*",
+                                                firstname: "*",
+                                                fathername: "*",
+                                                firstBirthday: date,
+                                                lastBirthday: date
+                                            },
+                                        });
                                         var win = panel.up('window[name=delWin]');
                                         win.close();
                                     }

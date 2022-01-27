@@ -64,24 +64,21 @@
                                 xtype: 'textfield',
                                 width: '15%',
                                 name: 'surname',
-                                fieldLabel: 'Фамилия',
-                                allowBlank: false
+                                fieldLabel: 'Фамилия'
                             },
                             {
                                 margin: '5 5 5 5',
                                 xtype: 'textfield',
                                 width: '15%',
                                 name: 'firstname',
-                                fieldLabel: 'Имя',
-                                allowBlank: false
+                                fieldLabel: 'Имя'
                             },
                             {
                                 margin: '5 5 5 5',
                                 xtype: 'textfield',
                                 width: '15%',
                                 name: 'fathername',
-                                fieldLabel: 'Отчество',
-                                allowBlank: false
+                                fieldLabel: 'Отчество'
                             }
                         ]
                     },
