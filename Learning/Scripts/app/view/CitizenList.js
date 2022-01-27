@@ -4,9 +4,15 @@
     type: 'vbox',
     align: 'stretch',
     title: 'Реестр граждан',
+    
 
     initComponent: function () {
-        
+        var surnameFilter = null;
+        var firstnameFilter = null;
+        var fathernameFilter = null;
+        var firstdateFilter = null;
+        var lastdateFilter = null;
+
         this.dockedItems = Ext.create('Ext.toolbar.Toolbar', {
             alias: 'widget.toolbarEditUser',
             dock: 'right',
