@@ -28,13 +28,15 @@ namespace Learning.Controllers
         /// <param name="firstBirthday">Искать по дате рождения с этой даты</param>
         /// <param name="lastBirthday">Искать по дате рождения до этой даты</param>
         /// <returns></returns>
-        public FileResult GetReport(string surname, string firstname, string fathername, DateTime firstBirthday, DateTime lastBirthday)
+        public FileResult GetReport(string surname, string firstname, string fathername, string firstBirthday, string lastBirthday)
         {
+            DateTime first = Convert.ToDateTime(firstBirthday);
+            DateTime last = Convert.ToDateTime(lastBirthday);
             var cont = new WindsorContainer();
             cont.Install(new CastleWindConf());
             IGetTable connect = cont.Resolve<IGetTable>();
             ISQL sql = cont.Resolve<ISQL>();
-            List<Citizen> citizens = connect.GetDataTable(sql.GetAllColumn(surname, firstname, fathername, firstBirthday, lastBirthday));
+            List<Citizen> citizens = connect.GetDataTable(sql.GetAllColumn(surname, firstname, fathername, first, last));
 
             Stream stream = new MemoryStream();
             WebReport webReport = new WebReport();

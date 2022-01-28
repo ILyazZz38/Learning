@@ -41,6 +41,9 @@
         var fathernameText = panel.down('textfield[name=fathername]').getValue();
         var firstDate = panel.down('datefield[name=firstdate]').getValue();
         var lastDate = panel.down('datefield[name=lastdate]').getValue();        
+        var qwerty = panel.down('datefield[name=firstdate]');
+        var me = qwerty.day;
+        var me2 = qwerty.mounth;
 
         if (surnameText == "" & firstnameText == "" & fathernameText == "" & firstDate == null & lastDate == null) {
             Ext.Msg.alert('Ошибка!', 'Поиск невозможен! Введите данные для поиска!');
@@ -82,9 +85,6 @@
                             else {
                                 globalLastdate = lastDate;
                             }
-                            var me1 = lastDate;
-                            var me = globalLastdate;
-                            me1 = lastDate;
                         }
                     }
                     catch {
@@ -424,10 +424,20 @@
 
     //Печать
     Print: function (button) {
+        
         if (getFilter == 1) {
             var form = Ext.create('Ext.form.Panel', {
                 standardSubmit: true,
             })
+
+            if (globalFirstdate != '01 01 0001')
+                var firstDate = Ext.Date.format(globalFirstdate, 'd.m.Y')
+            else
+                var firstDate = globalFirstdate
+            if (globalLastdate != '01 01 0001')
+                var lastDate = Ext.Date.format(globalLastdate, 'd.m.Y')
+            else
+                var lastDate = globalLastdate
 
             form.getForm().submit({
                 url: 'FastReport/GetReport',
@@ -435,8 +445,8 @@
                     surname: globalSurname,
                     firstname: globalFirstname,
                     fathername: globalFathername,
-                    firstBirthday: globalFirstdate,
-                    lastBirthday: globalLastdate
+                    firstBirthday: firstDate,
+                    lastBirthday: lastDate
                 },
             });
         } else {
