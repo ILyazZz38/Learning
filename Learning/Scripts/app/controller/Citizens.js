@@ -42,8 +42,6 @@
         var firstDate = panel.down('datefield[name=firstdate]').getValue();
         var lastDate = panel.down('datefield[name=lastdate]').getValue();        
         var qwerty = panel.down('datefield[name=firstdate]');
-        var me = qwerty.day;
-        var me2 = qwerty.mounth;
 
         if (surnameText == "" & firstnameText == "" & fathernameText == "" & firstDate == null & lastDate == null) {
             Ext.Msg.alert('Ошибка!', 'Поиск невозможен! Введите данные для поиска!');
