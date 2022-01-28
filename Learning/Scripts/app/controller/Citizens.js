@@ -1,6 +1,6 @@
 ﻿Ext.define('Learning.controller.Citizens', {
     extend: 'Ext.app.Controller',
-    views: ['CitizenList', 'Add'],
+    views: ['CitizenList'],
     stores: ['CitizenStore'],
     models: ['Citizen'],
 

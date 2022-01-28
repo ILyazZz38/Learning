@@ -171,7 +171,6 @@
     <Content Include="Scripts\app\controller\Citizens.js" />
     <Content Include="Scripts\app\model\Citizen.js" />
     <Content Include="Scripts\app\store\CitizenStore.js" />
-    <Content Include="Scripts\app\view\Add.js" />
     <Content Include="Scripts\app\view\CitizenList.js" />
     <Content Include="Scripts\app_start.js" />
     <Content Include="Scripts\extjs\ext-all.js" />
