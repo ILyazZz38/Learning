@@ -19,9 +19,9 @@ namespace Learning.Connection
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="connectionInformix"></param>
-        /// <param name="configuration"></param>
-        /// <param name="connectionInfmxEditTable"></param>
+        /// <param name="connectionInformix">Для получения данных</param>
+        /// <param name="configuration">конфиг с строкой подключения</param>
+        /// <param name="connectionInfmxEditTable">Для изменения данных</param>
         public Connect(IIfxConnectGetData connectionInformix, IParsConfig configuration, IIfxConnectEditTable connectionInfmxEditTable)
         {
 
@@ -33,7 +33,7 @@ namespace Learning.Connection
         /// <summary>
         /// Получение данных
         /// </summary>
-        /// <param name="sql"></param>
+        /// <param name="sql">Строка с командой sql</param>
         /// <returns></returns>
         public List<Citizen> GetDataTable(string sql)
         {
@@ -60,7 +60,7 @@ namespace Learning.Connection
         /// <summary>
         /// Изменение данных
         /// </summary>
-        /// <param name="sqlRes"></param>
+        /// <param name="sqlRes">Строка с командой sql</param>
         /// <returns></returns>
         public ResResponse EditDataTable(SqlRes sqlRes)
         {

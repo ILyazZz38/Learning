@@ -66,7 +66,7 @@ namespace Learning.Connection
         /// <summary>
         /// Получение результата действий с БД
         /// </summary>
-        /// <param name="sqlResult"></param>
+        /// <param name="sqlResult">Запрос sql</param>
         /// <returns></returns>
         public ResResponse EditTable(SqlRes sqlResult)
         {

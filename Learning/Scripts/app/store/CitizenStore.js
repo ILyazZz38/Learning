@@ -5,7 +5,7 @@
     storeId: 'CitizenStore',
     proxy: {
         type: 'ajax',
-        url: 'Json/GetData',
+        url: 'Search/GetData',
         reader: {
             type: 'json',
             method: 'POST',

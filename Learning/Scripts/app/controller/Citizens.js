@@ -1,9 +1,9 @@
 ﻿Ext.define('Learning.controller.Citizens', {
     extend: 'Ext.app.Controller',
-
     views: ['CitizenList', 'Add'],
     stores: ['CitizenStore'],
     models: ['Citizen'],
+
     init: function () {
         this.control({
             'viewport > citizenlist': {
@@ -32,6 +32,7 @@
         this.record = record;
     },
 
+    //Поиск по фильтрам
     SearchCitizen: function (button) {
         var panel = button.up('citizenlist');
         var gridPanel = panel.down('gridpanel[name=table]');
@@ -71,40 +72,45 @@
                     lastBirthday: lastDate
                 },
                 callback: function (records, operation, success) {
-                    console.log(operation.response.responseText);
-                    var data = Ext.decode(operation.response.responseText);
-                    if (data.success) {
-                        getFilter = 1;
-                        if (surnameText == "") {
-                            globalSurname = '*'
+                    /*console.log(operation.response.responseText);*/
+                    try {
+                        var data = Ext.decode(operation.response.responseText);
+                        if (data.success) {
+                            getFilter = 1;
+                            if (surnameText == "") {
+                                globalSurname = '*'
+                            }
+                            else {
+                                globalSurname = surnameText;
+                            }
+                            if (firstnameText == "") {
+                                globalFirstname = '*'
+                            }
+                            else {
+                                globalFirstname = firstnameText;
+                            }
+                            if (fathernameText == "") {
+                                globalFathername = '*'
+                            }
+                            else {
+                                globalFathername = fathernameText;
+                            }
+                            if (firstDate == null) {
+                                globalFirstdate = '01 01 0001'
+                            }
+                            else {
+                                globalFirstdate = firstDate;
+                            } '*'
+                            if (lastDate == null) {
+                                globalLastdate = '*'
+                            }
+                            else {
+                                globalLastdate = lastDate;
+                            }
                         }
-                        else {
-                            globalSurname = surnameText;
-                        }
-                        if (firstnameText == "") {
-                            globalFirstname = '*'
-                        }
-                        else {
-                            globalFirstname = firstnameText;
-                        }
-                        if (fathernameText == "") {
-                            globalFathername = '*'
-                        }
-                        else {
-                            globalFathername = fathernameText;
-                        }
-                        if (firstDate == null) {
-                            globalFirstdate = '01 01 0001'
-                        }
-                        else {
-                            globalFirstdate = firstDate;
-                        } '*'
-                        if (lastDate == null) {
-                            globalLastdate = '*'
-                        }
-                        else {
-                            globalLastdate = lastDate;
-                        }
+                    }
+                    catch {
+                        Ext.Msg.alert('Ошибка!', 'Граждане с похожими данными не найдены!');
                     }
                 },
             });
@@ -438,6 +444,7 @@
         win.show();
     },
 
+    //Печать
     Print: function (button) {
         if (getFilter == 1) {
             var form = Ext.create('Ext.form.Panel', {

@@ -13,8 +13,13 @@ namespace Learning.Connection.SQL
         string NameTable = "citizens";
 
         /// <summary>
-        /// Команда получения всех данных с таблицы
+        /// Команда получения данных удовлетворяющих фильтрам
         /// </summary>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="firstname">Имя</param>
+        /// <param name="fathername">Отчество</param>
+        /// <param name="firstBirthday">Искать по дате рождения с этой даты</param>
+        /// <param name="lastBirthday">Искать по дате рождения до этой даты</param>
         /// <returns></returns>
         public string GetAllColumn(string surname, string firstname, string fathername, DateTime firstBirthday, DateTime lastBirthday)
         {
@@ -60,12 +65,6 @@ namespace Learning.Connection.SQL
             }
             return sql;
         }
-
-        //public string SearchColumn(string surnameText, string nameText, string fatherNameText, DateTime firstBirthdayDate, DateTime lastBirthdayDate)
-        //{
-        //    string sql = "Select * FROM  " + NameTable + "";
-        //    return sql;
-        //}
 
         /// <summary>
         /// Команда добавления нового гражданина в таблицу
@@ -125,7 +124,7 @@ namespace Learning.Connection.SQL
         /// <summary>
         /// Команда удаления гражданина из таблицы
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Ключ</param>
         /// <returns></returns>
         public SqlRes DeleteColumn(int id)
         {

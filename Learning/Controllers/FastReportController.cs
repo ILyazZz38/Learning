@@ -22,6 +22,11 @@ namespace Learning.Controllers
         /// <summary>
         /// Получаем данные и формируем отчет
         /// </summary>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="firstname">Имя</param>
+        /// <param name="fathername">Отчество</param>
+        /// <param name="firstBirthday">Искать по дате рождения с этой даты</param>
+        /// <param name="lastBirthday">Искать по дате рождения до этой даты</param>
         /// <returns></returns>
         public FileResult GetReport(string surname, string firstname, string fathername, DateTime firstBirthday, DateTime lastBirthday)
         {

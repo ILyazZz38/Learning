@@ -151,7 +151,7 @@
     <Compile Include="Connection\SQL\SQL.cs" />
     <Compile Include="Controllers\EditTableColumnController.cs" />
     <Compile Include="Controllers\FastReportController.cs" />
-    <Compile Include="Controllers\JsonController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -16,7 +16,7 @@ namespace Learning.Connection
         /// <summary>
         /// Создание параметров для SQL запроса
         /// </summary>
-        /// <param name="ifxCommand"></param>
+        /// <param name="ifxCommand">Формирует команду</param>
         /// <param name="sqlRes">Модель</param>
         public void CreateParams(IfxCommand ifxCommand, SqlRes sqlRes)
         {
