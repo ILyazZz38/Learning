@@ -75,13 +75,16 @@
                             }
                             else {
                                 globalFirstdate = firstDate;
-                            } '*'
+                            }
                             if (lastDate == null) {
-                                globalLastdate = '*'
+                                globalLastdate = '01 01 0001'
                             }
                             else {
                                 globalLastdate = lastDate;
                             }
+                            var me1 = lastDate;
+                            var me = globalLastdate;
+                            me1 = lastDate;
                         }
                     }
                     catch {

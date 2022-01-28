@@ -33,7 +33,7 @@ namespace Learning.Connection.SQL
                     sql = sql + " surname = '" + surname + "'";
                     isNotFrirst = true;
                 }
-                if (firstname != "*")
+                if (firstname != "")
                 {
                     if (isNotFrirst)
                         sql = sql + " AND";
