@@ -19,16 +19,16 @@ namespace Learning.Connection.SQL
         /// <param name="firstname">Имя</param>
         /// <param name="fathername">Отчество</param>
         /// <param name="firstBirthday">Искать по дате рождения с этой даты</param>
-        /// <param name="lastBirthday">Искать по дате рождения до этой даты</param>
+        /// <param name="lastBirthday">Искать по дате рождения с этой даты</param>
         /// <returns></returns>
         public string GetAllColumn(string surname, string firstname, string fathername, DateTime firstBirthday, DateTime lastBirthday)
         {
             string sql = "SELECT  id_citizen, surname, firstname, fathername, birthday FROM  " + NameTable;
             bool isNotFrirst = false;
-            if (surname != "*" | firstname != "*" | fathername != "*" | firstBirthday != DateTime.MinValue | lastBirthday != DateTime.MinValue)
+            if (surname != "" | firstname != "" | fathername != "" | firstBirthday != DateTime.MinValue | lastBirthday != DateTime.MinValue)
             {
                 sql = sql + " WHERE ";
-                if (surname != "*")
+                if (surname != "")
                 {
                     sql = sql + " surname = '" + surname + "'";
                     isNotFrirst = true;
@@ -40,7 +40,7 @@ namespace Learning.Connection.SQL
                     sql = sql + " firstname = '" + firstname + "'";
                     isNotFrirst = true;
                 }
-                if (fathername != "*")
+                if (fathername != "")
                 {
                     if (isNotFrirst)
                         sql = sql + " AND";

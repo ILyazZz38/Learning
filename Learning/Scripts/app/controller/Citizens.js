@@ -46,15 +46,6 @@
             Ext.Msg.alert('Ошибка!', 'Поиск невозможен! Введите данные для поиска!');
         }
         else {
-            if (surnameText == "") {
-                surnameText = '*'
-            }
-            if (firstnameText == "") {
-                firstnameText = '*'
-            }
-            if (fathernameText == "") {
-                fathernameText = '*'
-            }
             if (firstDate == null) {
                 firstDate = '01 01 0001'
             }
@@ -72,29 +63,13 @@
                     lastBirthday: lastDate
                 },
                 callback: function (records, operation, success) {
-                    /*console.log(operation.response.responseText);*/
                     try {
                         var data = Ext.decode(operation.response.responseText);
                         if (data.success) {
                             getFilter = 1;
-                            if (surnameText == "") {
-                                globalSurname = '*'
-                            }
-                            else {
-                                globalSurname = surnameText;
-                            }
-                            if (firstnameText == "") {
-                                globalFirstname = '*'
-                            }
-                            else {
-                                globalFirstname = firstnameText;
-                            }
-                            if (fathernameText == "") {
-                                globalFathername = '*'
-                            }
-                            else {
-                                globalFathername = fathernameText;
-                            }
+                            globalSurname = surnameText;
+                            globalFirstname = firstnameText;
+                            globalFathername = fathernameText;
                             if (firstDate == null) {
                                 globalFirstdate = '01 01 0001'
                             }

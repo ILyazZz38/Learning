@@ -97,7 +97,7 @@
                                 fieldLabel: 'Дата рождения с',
                                 name: 'firstdate',
                                 width: '15%',
-                                format: 'd.m.Y'
+                                format: 'd.m.Y',
                             },
                             {
                                 margin: '5 5 5 5',
