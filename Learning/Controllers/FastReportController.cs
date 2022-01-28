@@ -18,7 +18,6 @@ namespace Learning.Controllers
 {
     public class FastReportController : Controller
     {
-
         /// <summary>
         /// Получаем данные и формируем отчет
         /// </summary>
@@ -48,11 +47,11 @@ namespace Learning.Controllers
             {
                 for (int row = 0; row < citizens.Count; row++)
                 {
-                    table[0, row].Text = citizens[row].id_citizen.ToString();
-                    table[1, row].Text = citizens[row].surname.ToString();
-                    table[2, row].Text = citizens[row].firstname.ToString();
-                    table[3, row].Text = citizens[row].fathername.ToString();
-                    table[4, row].Text = citizens[row].birthday.ToString();
+                    table[0, row].Text = citizens[row].id_citizen;
+                    table[1, row].Text = citizens[row].surname;
+                    table[2, row].Text = citizens[row].firstname;
+                    table[3, row].Text = citizens[row].fathername;
+                    table[4, row].Text = citizens[row].birthday;
 
                     table[0, row].Border.Lines = BorderLines.All;
                     table[1, row].Border.Lines = BorderLines.All;

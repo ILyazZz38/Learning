@@ -49,7 +49,7 @@ namespace Learning.Connection
                 citizen.surname = column[1];
                 citizen.firstname = column[2];
                 citizen.fathername = column[3];
-                citizen.birthday = column[4];
+                citizen.birthday = column[4].Substring(0, 10);
                 citizens.Add(citizen);
             }
             connectionInformix.CloseConnection();
