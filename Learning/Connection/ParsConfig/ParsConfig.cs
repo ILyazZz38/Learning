@@ -24,7 +24,7 @@ namespace Learning.Connection.ParsConfig
         /// </summary>
         public void ParseConfiguration()
         {
-            ConfigurationConnect = "Database=sz_stagers; Host=192.168.224.27; Server=ol_test; Service=1527; Client Locale=ru_ru.CP1251; Database Locale=RU_RU.8859-5; Protocol=olsoctcp; UID=informix; Password=info;";
+            ConfigurationConnect = "Database=sz_stagers; Host={yourhost}; Server=ol_test; Service=1527; Client Locale=ru_ru.CP1251; Database Locale=RU_RU.8859-5; Protocol=olsoctcp; UID=informix; Password={yourpass};";
         }
     }
 }
