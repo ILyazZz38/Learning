@@ -1,7 +1,7 @@
 # Learning
 My project, which I completed during an internship at the Bars group  | Мой проект, который я выполнил на стажировке в Барс груп
 
-#Стек технологий | Technology stack
+# Стек технологий | Technology stack
 ExtJs 4
 C# ASP.NET Framework 4.5.2
 IBM Informix
